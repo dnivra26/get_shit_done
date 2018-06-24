@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'auth.dart';
+import 'home.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(
+    MaterialApp(
+      title: 'Navigation Basics',
+      home: MyApp(),
+    )
+);
 
 
 class MyApp extends StatelessWidget {
@@ -23,6 +29,10 @@ class MyApp extends StatelessWidget {
               var signInWithGoogle2 = signInWithGoogle();
               signInWithGoogle2.then((user) {
                   print(user.displayName);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen(userId: user.uid)),
+                  );
               });
               // Perform some action
             },
